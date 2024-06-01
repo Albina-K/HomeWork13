@@ -29,11 +29,17 @@ class Program
 
         foreach (var word in words) 
         {
-        if (repeatedWords.ContainsKey(word)) 
-            { 
-            
+            if (repeatedWords.ContainsKey(word)) 
+            {
+                repeatedWords[word]++;
             }
         }
-    }
 
+        var sort = repeatedWords.OrderByDescending(c => c.Value).Take(10);
+
+        foreach (var word in sort) 
+        {
+            Console.WriteLine($"{word.Key} - {word.Value}");
+        }        
+    }
 }
